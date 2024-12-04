@@ -28,9 +28,12 @@ jobs:
         SERVER: ${{ matrix.server }}
       run: |
         ssh -o StrictHostKeyChecking=no -i private_key ec2-user@$SERVER << 'EOF'
+          sudo chown -R ec2-user:ec2-user /home/ec2-user/Node-x-Nginx
           cd /home/ec2-user/Node-x-Nginx
+          git config --global --add safe.directory /home/ec2-user/Node-x-Nginx
           git pull origin main
           npm install
+          command -v pm2 >/dev/null 2>&1 || npm install -g pm2
           pm2 restart my-app || pm2 start index.js --name "my-app"
           sudo systemctl restart nginx
         EOF
