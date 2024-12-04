@@ -34,7 +34,7 @@ jobs:
           git reset --hard HEAD
           git pull origin main
           npm install
-          pm2 restart my-app 
+          sudo pm2 restart my-app 
           sudo systemctl restart nginx
         EOF
 
