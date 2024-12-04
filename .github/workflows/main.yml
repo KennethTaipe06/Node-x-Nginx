@@ -31,6 +31,7 @@ jobs:
           sudo chown -R ec2-user:ec2-user /home/ec2-user/Node-x-Nginx
           cd /home/ec2-user/Node-x-Nginx
           git config --global --add safe.directory /home/ec2-user/Node-x-Nginx
+          git reset --hard HEAD
           git pull origin main
           npm install
           command -v pm2 >/dev/null 2>&1 || npm install -g pm2
