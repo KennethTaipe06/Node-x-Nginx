@@ -6,7 +6,7 @@ const port = 3000;
 
 app.get('/', (req, res) => {
   const hostname = os.hostname();
-  res.send(`Hola, mundo! El nombre de tu máquina es: ${hostname}`);
+  res.send(`testeo! El nombre de tu máquina es: ${hostname}`);
 });
 
 app.listen(port, '0.0.0.0', () => {
