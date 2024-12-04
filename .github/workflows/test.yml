@@ -39,7 +39,7 @@ jobs:
           cd /home/ec2-user/Node-x-Nginx
           git config --global --add safe.directory /home/ec2-user/Node-x-Nginx
           git reset --hard HEAD
-          git pull origin main
+          git pull origin test
           npm install
           sudo pm2 restart my-app 
           sudo systemctl restart nginx
