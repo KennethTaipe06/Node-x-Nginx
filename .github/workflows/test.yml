@@ -1,9 +1,9 @@
-name: Deploy after pull request
+name: Deploy to test
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - test
 
 jobs:
   deploy:
@@ -11,8 +11,7 @@ jobs:
     strategy:
       matrix:
         server: 
-          - ec2-3-91-95-49.compute-1.amazonaws.com
-          - ec2-34-204-107-58.compute-1.amazonaws.com
+          - ec2-54-82-65-124.compute-1.amazonaws.com
 
     steps:
     - name: Checkout code
@@ -40,7 +39,7 @@ jobs:
           cd /home/ec2-user/Node-x-Nginx
           git config --global --add safe.directory /home/ec2-user/Node-x-Nginx
           git reset --hard HEAD
-          git pull origin main
+          git pull origin test
           npm install
           sudo pm2 restart my-app 
           sudo systemctl restart nginx
